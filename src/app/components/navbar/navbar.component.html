@@ -1,0 +1,11 @@
+<nav>
+    <div class="links">
+        <a class="link"
+            *ngFor="let link of links"
+            [routerLink]="link.path"
+            [fragment]="link.fragment"
+        >
+        {{ link.text }}
+        </a>
+    </div>
+</nav>
