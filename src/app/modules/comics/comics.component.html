@@ -1,4 +1,33 @@
 <app-navbar></app-navbar>
-<div>
-  <p>comics works!</p>
+<app-pagination
+  [items]="pages"
+  *ngIf="isLoaded"
+  (changePage)="pageChange($event)"
+  [currentPage]="currentPage">
+</app-pagination>
+<div class="comics-page">
+  <app-modal id="modal_1" class="hhidden">
+    <app-character-details [data]="comicsDetails" *ngIf="comicsDetails"> </app-character-details>
+  </app-modal>
+  <div class="container">
+    <span class="loader" *ngIf="!isLoaded"></span>
+  </div>
+  <div class="comics-page-item"
+    *ngFor="let item of comics"
+    (click)="viewDetails(item.id)"
+  >
+    <img [src]="item.thumbnail.path + '.' + item.thumbnail.extension" alt="comic">
+    <span class="comics-page-item-title"> {{ item.title }} </span>
+    <div class="comics-page-item-subtitle" *ngIf="item.creators">
+      <span *ngFor="let creator of item.creators.items"> 
+        {{ creator.name }} - {{ creator.rol }}
+      </span>
+    </div>
+  </div>
 </div>
+<app-pagination 
+  [items]="pages" 
+  *ngIf="isLoaded" 
+  (changePage)="pageChange($event)"
+  [currentPage]="currentPage">
+</app-pagination>

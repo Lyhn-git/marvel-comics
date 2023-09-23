@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ComicsComponent } from './comics.component';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { CharacterDetailsComponent } from '../../components/character-details/character-details.component'
 
 const ROUTES = [
   {

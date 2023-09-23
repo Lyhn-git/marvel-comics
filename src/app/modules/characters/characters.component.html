@@ -1,1 +1,29 @@
-<p>characters works!</p>
+<app-navbar></app-navbar>
+<app-pagination
+  [items]="pages"
+  *ngIf="isLoaded"
+  (changePage)="pageChange($event)"
+  [currentPage]="currentPage">
+</app-pagination>
+<div class="characters-page">
+  <app-modal id="modal_1" class="hhidden">
+    <app-character-details [data]="characterDetails" *ngIf="characterDetails"> </app-character-details>
+  </app-modal>
+  <div class="container">
+    <span class="loader" *ngIf="!isLoaded"></span>
+  </div>
+  <div class="characters-page-item"
+    *ngFor="let char of characters"
+    (click)="viewDetails(char.id)"
+  >
+    <img [src]="char.thumbnail.path + '.' + char.thumbnail.extension" alt="character">
+    <span class="characters-page-item-title"> {{ char.name }} </span>
+    <span class="characters-page-item-subtitle"> Number of stories: {{ char.stories.available }} </span>
+  </div>
+</div>
+<app-pagination 
+  [items]="pages" 
+  *ngIf="isLoaded" 
+  (changePage)="pageChange($event)"
+  [currentPage]="currentPage">
+</app-pagination>

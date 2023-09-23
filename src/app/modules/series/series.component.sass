@@ -1,0 +1,29 @@
+@import '../../../sass/variables'
+.series-page
+  margin: 20px
+  display: flex
+  gap: 40px
+  flex-wrap: wrap
+  padding: 20px
+  &-item
+    display: flex
+    flex-direction: column
+    text-align: center
+    gap: 10px
+    background-color: $gray
+    color: $white
+    box-shadow: 10px 10px 4px $red
+    justify-content: start
+    border-radius: 12px
+    width: 200px
+    height: 350px
+    overflow: hidden
+    cursor: pointer
+    &-title
+      font-weight: 700
+    &-subtitle
+      font-size: 12px
+    img
+      width: 200px
+      height: 150px
+      object-fit: cover

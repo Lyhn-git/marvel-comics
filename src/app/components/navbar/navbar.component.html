@@ -4,6 +4,7 @@
             *ngFor="let link of links"
             [routerLink]="link.path"
             [fragment]="link.fragment"
+            [routerLinkActive]="''"
         >
         {{ link.text }}
         </a>

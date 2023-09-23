@@ -1,1 +1,29 @@
-<p>creators works!</p>
+<app-navbar></app-navbar>
+<app-pagination
+  [items]="pages"
+  *ngIf="isLoaded"
+  (changePage)="pageChange($event)"
+  [currentPage]="currentPage">
+</app-pagination>
+<div class="creators-page">
+  <app-modal id="modal_1" class="hhidden">
+    <app-character-details [data]="creatorsDetails" *ngIf="creatorsDetails"> </app-character-details>
+  </app-modal>
+  <div class="container">
+    <span class="loader" *ngIf="!isLoaded"></span>
+  </div>
+  <div class="creators-page-item"
+    *ngFor="let char of creators"
+    (click)="viewDetails(char.id)"
+  >
+    <img [src]="char.thumbnail.path + '.' + char.thumbnail.extension" alt="creator">
+    <span class="creators-page-item-title"> {{ char.fullName }} </span>
+    <span class="creators-page-item-subtitle"> Number of stories: {{ char.stories.available }} </span>
+  </div>
+</div>
+<app-pagination 
+  [items]="pages" 
+  *ngIf="isLoaded" 
+  (changePage)="pageChange($event)"
+  [currentPage]="currentPage">
+</app-pagination>

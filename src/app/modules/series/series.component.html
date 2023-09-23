@@ -1,1 +1,33 @@
-<p>series works!</p>
+<app-navbar></app-navbar>
+<app-pagination
+  [items]="pages"
+  *ngIf="isLoaded"
+  (changePage)="pageChange($event)"
+  [currentPage]="currentPage">
+</app-pagination>
+<div class="series-page">
+  <app-modal id="modal_1" class="hhidden">
+    <app-character-details [data]="seriesDetails" *ngIf="seriesDetails"> </app-character-details>
+  </app-modal>
+  <div class="container">
+    <span class="loader" *ngIf="!isLoaded"></span>
+  </div>
+  <div class="series-page-item"
+    *ngFor="let char of series"
+    (click)="viewDetails(char.id)"
+  >
+    <img [src]="char.thumbnail.path + '.' + char.thumbnail.extension" alt="creator">
+    <span class="series-page-item-title"> {{ char.title }} </span>
+    <div class="comics-page-item-subtitle" *ngIf="char.creators">
+      <span *ngFor="let creator of char.creators.items"> 
+        {{ creator.name }}
+      </span>
+    </div>
+  </div>
+</div>
+<app-pagination 
+  [items]="pages" 
+  *ngIf="isLoaded" 
+  (changePage)="pageChange($event)"
+  [currentPage]="currentPage">
+</app-pagination>

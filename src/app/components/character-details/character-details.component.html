@@ -1,0 +1,15 @@
+<div class="character-details">
+  <div class="content">
+    <img [src]="data.thumbnail.path + '.' + data.thumbnail.extension" alt="character">
+    <div>
+      <h2 class="title"> {{data.name}} </h2>
+      <span> {{data.description}} </span>
+      <span *ngIf="data.description === ''"> Description not available </span>
+    </div>
+  </div>
+  <div class="stories">
+    <h4> List of stories:  </h4>
+    <a *ngFor="let story of data.stories.items"> {{ story.name }} </a>
+  </div>
+
+</div>
